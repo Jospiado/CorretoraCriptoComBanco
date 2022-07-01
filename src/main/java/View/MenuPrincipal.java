@@ -70,14 +70,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BotaoDepositar = new javax.swing.JButton();
         BotaoVender = new javax.swing.JButton();
         botaocomprar = new javax.swing.JButton();
+        combomoedas1 = new javax.swing.JComboBox<>();
         combomoedas = new javax.swing.JComboBox<>();
         data = new javax.swing.JTextField();
         textemcarteira = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         emcarteira = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         preco = new javax.swing.JLabel();
+        RemoveMoeda = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -95,16 +101,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Tipo Operação", "Quantidade", "Data", "Valor R$", "Valor Moeda", "Valor BTC"
+                "Cód.Operação", "Código", "Nome", "Tipo Operação", "Quantidade", "Data", "Valor R$", "Valor Moeda", "Valor BTC"
             }
         ));
         jScrollPane1.setViewportView(tabela);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 770, 180));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Lucro 5%");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 60, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 60, 20));
 
         quantia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +132,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 BotaoDepositarActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 190, 40));
+        getContentPane().add(BotaoDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 120, 40));
 
         BotaoVender.setBackground(new java.awt.Color(255, 51, 51));
         BotaoVender.setText("VENDER");
@@ -134,7 +141,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 BotaoVenderActionPerformed(evt);
             }
         });
-        getContentPane().add(BotaoVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 190, 40));
+        getContentPane().add(BotaoVender, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 120, 40));
 
         botaocomprar.setBackground(new java.awt.Color(51, 204, 0));
         botaocomprar.setText("COMPRAR");
@@ -143,7 +150,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 botaocomprarActionPerformed(evt);
             }
         });
-        getContentPane().add(botaocomprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 190, 40));
+        getContentPane().add(botaocomprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 120, 40));
+
+        combomoedas1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combomoedas1ItemStateChanged(evt);
+            }
+        });
+        combomoedas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combomoedas1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(combomoedas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 150, 30));
 
         combomoedas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -185,6 +204,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 110, 30));
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Digite o ID do Serviço para Exclui-lo");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 270, 30));
+
         emcarteira.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         emcarteira.setForeground(new java.awt.Color(255, 255, 255));
         emcarteira.setText("EM CARTEIRA:");
@@ -198,6 +222,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         preco.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         preco.setForeground(new java.awt.Color(51, 255, 51));
         getContentPane().add(preco, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 250, 20));
+
+        RemoveMoeda.setBackground(new java.awt.Color(255, 0, 0));
+        RemoveMoeda.setText("Remover Moeda");
+        RemoveMoeda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveMoedaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RemoveMoeda, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 130, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,6 +247,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 250, 20));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 130, -1));
+
+        jButton1.setBackground(new java.awt.Color(204, 0, 51));
+        jButton1.setText("Excluir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("SELECIONE A CRIPTOMOEDA A EXCLUIR:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 350, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -301,6 +349,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
              this.controller.navegarparacadastrar();
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            this.controller.excluirServico();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void combomoedas1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combomoedas1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combomoedas1ItemStateChanged
+
+    private void combomoedas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combomoedas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combomoedas1ActionPerformed
+
+    private void RemoveMoedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveMoedaActionPerformed
+            this.controller.removerMoeda();
+    }//GEN-LAST:event_RemoveMoedaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,21 +403,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoDepositar;
     private javax.swing.JButton BotaoVender;
+    private javax.swing.JButton RemoveMoeda;
     private javax.swing.JButton botaocomprar;
     private javax.swing.JComboBox<String> combomoedas;
+    private javax.swing.JComboBox<String> combomoedas1;
     private javax.swing.JTextField data;
     private javax.swing.JLabel emcarteira;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel preco;
     private javax.swing.JTextField quantia;
     private javax.swing.JTable tabela;
@@ -364,6 +434,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     public JLabel getValorbtc() {
         return valorbtc;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
     }
 
     public void setValorbtc(JLabel valorbtc) {
@@ -424,6 +502,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     public void setTextemcarteira(JLabel textemcarteira) {
         this.textemcarteira = textemcarteira;
+    }
+
+    public JComboBox<String> getCombomoedas1() {
+        return combomoedas1;
+    }
+
+    public void setCombomoedas1(JComboBox<String> combomoedas1) {
+        this.combomoedas1 = combomoedas1;
     }
     
     

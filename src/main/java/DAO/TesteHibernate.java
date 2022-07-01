@@ -8,15 +8,18 @@ package DAO;
 
 import Model.Moeda;
 import Model.Pessoa;
+import Model.Servico;
 import Model.Usuario;
+import Models.Serviço;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 
 
 public class TesteHibernate {
     public static void main(String[] args) {
        
-       Moeda moeda = new Moeda("BRL", "Real", 1);        
+       //Moeda moeda = new Moeda("BRL", "Real", 1);        
        /* Moeda moeda1 = new Moeda("BTC","Bitcoin",242000f);
         Moeda moeda2 = new Moeda("ETH","Etherium", 16000.00f);
         Moeda moeda3 = new Moeda("ADA","Cardano", 10.90f);  
@@ -31,7 +34,15 @@ public class TesteHibernate {
         em.persist(p2);
         em.persist(u);
         em.persist(u2);*/
-        em.persist(moeda);
+        //em.persist(moeda);
+        Usuario compra = new Usuario();
+        compra.setId(2);
+       
+        String jpql = "DELETE FROM Usuario WHERE id = :pid";
+        
+        Query query = em.createQuery(jpql);
+        query.setParameter("pid", compra.getId());
+        query.executeUpdate();
         /*em.persist(moeda1);
         em.persist(moeda2);
         em.persist(moeda3);*/

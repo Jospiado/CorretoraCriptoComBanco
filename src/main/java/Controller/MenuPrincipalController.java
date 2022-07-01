@@ -17,6 +17,7 @@ import View.Depositar;
 import View.MenuPrincipal;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 
@@ -161,6 +162,33 @@ public class MenuPrincipalController {
     public void navegarparacadastrar() {
             new CadastrarMoeda().setVisible(true);
             view.dispose();
+    }
+    public void excluirServico(){
+            
+            int id =Integer.parseInt(view.getjTextField1().getText());
+            ServicoDAO dao = new ServicoDAO(em);
+            dao.deleteporId(id);
+            view.preenchertabelaConstrutor();
+            JOptionPane.showMessageDialog(null,"Registro excluido com sucesso!");
+    }
+
+    public void removerMoeda() {
+         Moeda moeda = (Moeda) view.getCombomoedas1().getSelectedItem();
+         int id = moeda.getId();
+        
+         MoedaDAO dao = new MoedaDAO(em);
+         
+         dao.deleteporId(id);
+         
+        DefaultComboBoxModel setarmodelos = (DefaultComboBoxModel) view.getCombomoedas().getModel();
+        DefaultComboBoxModel setarmodelos2=  (DefaultComboBoxModel) view.getCombomoedas1().getModel();
+        
+        setarmodelos.removeAllElements();
+        setarmodelos2.removeAllElements();
+        
+        
+        setarmoedas();
+         JOptionPane.showMessageDialog(null,"Moeda excluida com sucesso!");
     }
  }
  

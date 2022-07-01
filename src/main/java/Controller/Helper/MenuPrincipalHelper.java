@@ -50,10 +50,11 @@ public class MenuPrincipalHelper implements Helper{
     }
     public void preenchermoedas(ArrayList<Moeda> moedas){
         DefaultComboBoxModel setarmodelos = (DefaultComboBoxModel) view.getCombomoedas().getModel();
-        
+        DefaultComboBoxModel setarmodelos2=  (DefaultComboBoxModel) view.getCombomoedas1().getModel();
         //percorrer o comobobox preenchendo
         for (Moeda moeda : moedas) {
             setarmodelos.addElement(moeda);
+            setarmodelos2.addElement(moeda);
         }
     }
 
@@ -110,6 +111,7 @@ public class MenuPrincipalHelper implements Helper{
         //percorrer a lista preenchendo o servico
         for (Servico servico1 : servico) {
             tabelmodel.addRow(new Object[]{
+                servico1.getId(),
                 servico1.getCod_moeda(),
                 servico1.getNome_moeda(),
                 servico1.getDescricao(),

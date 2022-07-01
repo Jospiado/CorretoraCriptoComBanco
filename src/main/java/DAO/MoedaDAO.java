@@ -64,6 +64,19 @@ public class MoedaDAO {
         em.getTransaction().commit();
         em.close();
     }
+    
+    public void deleteporId(int id){
+        
+        em.getTransaction().begin();
+        
+            String jpql= "delete from Moeda"
+                    + " where id  = :ParametroId";
+            Query query = em.createQuery(jpql);
+            query.setParameter("ParametroId", id);
+            query.executeUpdate();
+            
+        em.getTransaction().commit();
+    }
     public Moeda selectporId(Moeda moeda){
         return em.find(Moeda.class, moeda);
     }

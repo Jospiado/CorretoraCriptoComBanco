@@ -57,9 +57,17 @@ public class ServicoDAO {
      * @param servico
      * @return 
      */
-    public void delete(Servico servico){
-        em.merge(servico);
-        em.remove(servico);
+    public void deleteporId(int id){
+        
+        em.getTransaction().begin();
+        
+            String jpql= "delete from Servico"
+                    + " where id  = :ParametroId";
+            Query query = em.createQuery(jpql);
+            query.setParameter("ParametroId", id);
+            query.executeUpdate();
+            
+        em.getTransaction().commit();
     }
     public Servico selectporId(Servico servico){
         return em.find(Servico.class, servico);
